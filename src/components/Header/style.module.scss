@@ -1,0 +1,48 @@
+.header {
+  background: #b2ccf5;
+  display: flex;
+  justify-content: center;
+  @media (width < 720px) {
+    padding: 12px;
+  }
+  @media (720px <= width) {
+    padding: 12px 24px;
+  }
+}
+
+.inner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: min(1280px, 100%);
+}
+
+.title {
+  color: #fff;
+  font-size: 2.8rem;
+}
+
+.button {
+  @media (width < 980px) {
+    display: block;
+  }
+  @media (980px <= width) {
+    display: none;
+  }
+}
+
+.nav {
+  @media (width < 980px) {
+    display: none;
+  }
+  @media (980px <= width) {
+    display: block;
+  }
+}
+
+.list {
+  color: #fff;
+  display: flex;
+  font-size: 1.8rem;
+  gap: 48px;
+}

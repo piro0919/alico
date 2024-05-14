@@ -1,0 +1,325 @@
+.topWrapper {
+  display: grid;
+  position: relative;
+  z-index: 1;
+
+  .leftWrapper {
+    align-content: center;
+    align-items: center;
+    color: #fff;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    position: relative;
+    z-index: 1;
+    @media (width < 740px) {
+      background: rgba(#ec5695, 0.25);
+    }
+    @media (740px <= width) {
+      background: #ec5695;
+    }
+  }
+
+  .leftWrapper::after {
+    border: 1px solid #fff;
+    content: "";
+    display: block;
+    position: absolute;
+    @media (width < 740px) {
+      inset: 12px;
+    }
+    @media (740px <= width) {
+      inset: 24px;
+    }
+  }
+
+  .diagonalLines {
+    background-color: #ec5695;
+    background-repeat: repeat;
+    color: #fff;
+    inset: 0;
+    position: absolute;
+    @media (width < 740px) {
+      clip-path: polygon(
+        0% 0%,
+        0% 100%,
+        12px 100%,
+        12px 12px,
+        calc(100% - 12px) 12px,
+        calc(100% - 12px) calc(100% - 12px),
+        12px calc(100% - 12px),
+        12px 100%,
+        100% 100%,
+        100% 0%
+      );
+    }
+    @media (740px <= width) {
+      clip-path: polygon(
+        0% 0%,
+        0% 100%,
+        24px 100%,
+        24px 24px,
+        calc(100% - 24px) 24px,
+        calc(100% - 24px) calc(100% - 24px),
+        24px calc(100% - 24px),
+        24px 100%,
+        100% 100%,
+        100% 0%
+      );
+    }
+  }
+
+  .loadingWrapper {
+    position: absolute;
+  }
+
+  .textsWrapper {
+    display: grid;
+    gap: 12px;
+    text-align: center;
+    @media (width < 740px) {
+      text-shadow:
+        0 0 10px #fff,
+        0 0 20px #fff;
+    }
+    @media (740px <= width) {
+      text-shadow:
+        0 0 10px #f5b2b9,
+        0 0 20px #f5b2b9,
+        0 0 30px #f5b2b9,
+        0 0 40px #f5b2b9,
+        0 0 50px #f5b2b9,
+        0 0 60px #f5b2b9;
+    }
+  }
+
+  .h1 {
+    font-size: 4.2rem;
+  }
+
+  .text {
+    font-size: 1.6rem;
+  }
+
+  .rightWrapper {
+    @media (width < 740px) {
+      height: calc(100% - 12px * 2);
+      inset: 12px;
+      position: absolute;
+      width: calc(100% - 12px * 2);
+    }
+    @media (740px <= width) {
+      position: relative;
+    }
+  }
+
+  .image {
+    object-fit: cover;
+    object-position: 50% 25%;
+  }
+
+  .button {
+    align-items: center;
+    border-radius: 50dvmax;
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .button::before {
+    background: #ec5695;
+    content: "";
+    display: block;
+    height: 24px;
+    position: absolute;
+    width: 24px;
+    z-index: 0;
+  }
+
+  .button * {
+    position: relative;
+  }
+  @media (width < 740px) {
+    grid-template: 100dvh / 100%;
+  }
+  @media (740px <= width) {
+    grid-template: 100dvh / repeat(2, 50%);
+  }
+}
+
+.contentWrapper {
+  background: #f7f5f2;
+  position: relative;
+  z-index: 1;
+}
+
+.contentWrapper::before {
+  background-image: url("/bg_rep1.png");
+  background-repeat: repeat;
+  background-size: calc(61px / 2) calc(96px / 2);
+  content: "";
+  display: block;
+  inset: 0;
+  opacity: 0.25;
+  position: absolute;
+  z-index: -1;
+}
+
+.headerWrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+
+  .masonry {
+    width: min(1280px, 100%);
+  }
+
+  .article {
+    background: #fff;
+    border: 1px solid #f3ece3;
+    border-radius: 12px;
+    box-shadow: 0 0 8px 4px rgba(#f3ece3, 0.5);
+    overflow: hidden;
+  }
+
+  .h2Wrapper {
+    @media (width < 740px) {
+      padding: 18px 12px 12px;
+    }
+    @media (740px <= width) {
+      padding: 24px 24px 18px;
+    }
+  }
+
+  .h2 {
+    font-size: 2.1rem;
+    font-weight: 700;
+  }
+
+  .hr {
+    background: #f3ece3;
+    border: 0;
+    height: 2px;
+    @media (width < 740px) {
+      margin: 0 12px;
+    }
+    @media (740px <= width) {
+      margin: 0 24px;
+    }
+  }
+
+  .content {
+    @media (width < 740px) {
+      padding: 12px;
+    }
+    @media (740px <= width) {
+      padding: 24px;
+    }
+  }
+  @media (width < 740px) {
+    padding: 24px 12px;
+  }
+  @media (740px <= width) {
+    padding: 48px 24px;
+  }
+}
+
+.article[data-article="topics"] {
+  .list {
+    display: grid;
+    @media (width < 740px) {
+      gap: 12px;
+    }
+    @media (740px <= width) {
+      gap: 24px;
+    }
+  }
+
+  .date {
+    font-size: 1.4rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
+.article[data-article="music-video"] {
+  .youTube {
+    aspect-ratio: 16 / 9;
+    position: relative;
+  }
+
+  .youTubeIframe {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.article[data-article="new-release"] {
+  .list {
+    display: grid;
+    @media (width < 740px) {
+      gap: 12px;
+    }
+    @media (740px <= width) {
+      gap: 24px;
+    }
+  }
+
+  .item {
+    display: grid;
+    grid-template: auto / auto 1fr;
+    @media (width < 740px) {
+      gap: 12px;
+    }
+    @media (740px <= width) {
+      gap: 24px;
+    }
+  }
+
+  .thumbnailWrapper {
+    position: relative;
+    @media (width < 740px) {
+      height: 120px;
+      width: 120px;
+    }
+    @media (740px <= width) {
+      height: 180px;
+      width: 180px;
+    }
+  }
+
+  .detailWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .releaseWrapper {
+    font-size: 1.4rem;
+  }
+
+  .titleWrapper {
+    font-size: 2rem;
+  }
+
+  .socialIcons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+  }
+
+  .socialIcon {
+    height: 36px !important;
+    width: 36px !important;
+  }
+}

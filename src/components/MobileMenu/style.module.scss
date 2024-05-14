@@ -1,0 +1,11 @@
+.nav {
+  background: #c5dedf;
+  color: #fff;
+}
+
+.list {
+  display: grid;
+  font-size: 1.4rem;
+  grid-template: auto / repeat(4, 1fr);
+  text-align: center;
+}

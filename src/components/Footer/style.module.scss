@@ -1,0 +1,28 @@
+.footer {
+  background: #333;
+  display: flex;
+  justify-content: center;
+  padding: 36px 24px;
+}
+
+.inner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: min(1280px, 100%);
+}
+
+.copyrightWrapper {
+  color: #fff;
+  font-size: 1.4rem;
+}
+
+.socialIcons {
+  display: flex;
+  gap: 12px;
+}
+
+.socialIcon {
+  height: 36px !important;
+  width: 36px !important;
+}
