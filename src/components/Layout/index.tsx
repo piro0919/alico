@@ -68,7 +68,7 @@ export type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
-  const { isLoading: initialIsLoading, isPwa: initialIsPwa } = usePwa();
+  const { isLoading, isPwa } = usePwa();
   const { setIsLoading, setIsPwa } = usePwaStore(
     useShallow<PwaState, Pick<PwaState, "setIsLoading" | "setIsPwa">>(
       (state) => ({
@@ -77,18 +77,17 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
       }),
     ),
   );
-  const isLoading = usePwaStore((state) => state.isLoading);
   const [paddingBottom, setPaddingBottom] = useState(0);
 
   useShowWindowSize();
 
   useEffect(() => {
-    setIsLoading({ isLoading: initialIsLoading });
-  }, [initialIsLoading, setIsLoading]);
+    setIsLoading({ isLoading });
+  }, [isLoading, setIsLoading]);
 
   useEffect(() => {
-    setIsPwa({ isPwa: env.NEXT_PUBLIC_IS_PWA === "true" || initialIsPwa });
-  }, [initialIsPwa, setIsPwa]);
+    setIsPwa({ isPwa: env.NEXT_PUBLIC_IS_PWA === "true" || isPwa });
+  }, [isPwa, setIsPwa]);
 
   return (
     <>
