@@ -1,21 +1,21 @@
 declare module "react-ios-pwa-prompt" {
-  import React from "react";
+  import { ComponentType } from "react";
 
-  interface PWAPromptProps {
-    timesToShow?: number;
-    promptOnVisit?: number;
-    permanentlyHideOnDismiss?: boolean;
-    copyTitle?: string;
-    copyBody?: string;
-    copyShareButtonLabel?: string;
+  type PWAPromptProps = {
     copyAddHomeButtonLabel?: string;
+    copyBody?: string;
     copyClosePrompt?: string;
-    delay?: number;
+    copyShareButtonLabel?: string;
+    copyTitle?: string;
     debug?: boolean;
+    delay?: number;
     onClose?: () => void;
-  }
+    permanentlyHideOnDismiss?: boolean;
+    promptOnVisit?: number;
+    timesToShow?: number;
+  };
 
-  const PWAPrompt: React.ComponentType<PWAPromptProps>;
+  const PWAPrompt: ComponentType<PWAPromptProps>;
 
   export default PWAPrompt;
 }

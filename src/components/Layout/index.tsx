@@ -1,9 +1,9 @@
 "use client";
 import NoSSR from "@mpth/react-no-ssr";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { ReactNode, useEffect, useState } from "react";
-import PWAPrompt from "react-ios-pwa-prompt";
 import usePwa from "use-pwa";
 import { useWindowSize } from "usehooks-ts";
 import { useShallow } from "zustand/react/shallow";
@@ -16,6 +16,10 @@ import env from "@/env";
 import useShowWindowSize from "@/hooks/useShowWindowSize";
 import useMusicListStore from "@/stores/useMusicListStore";
 import usePwaStore, { PwaState } from "@/stores/usePwaStore";
+
+const PWAPrompt = dynamic(() => import("react-ios-pwa-prompt"), {
+  ssr: false,
+});
 
 type CommonFooterProps = {
   setPaddingBottom: (paddingBottom: number) => void;
