@@ -1,21 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import usePwa from "use-pwa";
 
 export default function Page(): JSX.Element {
-  const [iOSCanInstall, setIOSCanInstall] = useState(false);
-  const [iOSIsInstalled, setIOSIsInstalled] = useState(false);
+  const hoge = usePwa();
 
-  useEffect(() => {
-    setIOSCanInstall("standalone" in window.navigator);
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    setIOSIsInstalled(window.navigator?.standalone === true);
-  }, [iOSCanInstall, iOSIsInstalled]);
-
-  return (
-    <div>
-      <div>{`iOSCanInstall: ${iOSCanInstall}`}</div>
-      <div>{`iOSIsInstalled: ${iOSIsInstalled}`}</div>
-    </div>
-  );
+  return <div style={{ fontSize: "20px" }}>{JSON.stringify(hoge)}</div>;
 }
