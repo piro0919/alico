@@ -2,6 +2,7 @@ import { Alice, Dancing_Script as DancingScript } from "next/font/google";
 import Link from "next/link";
 import { CgMenuRight } from "react-icons/cg";
 import styles from "./style.module.scss";
+import menuItems from "@/lib/menuItems";
 import useDrawerStore from "@/stores/useDrawerStore";
 
 const alice = Alice({
@@ -27,18 +28,11 @@ export default function Header(): JSX.Element {
         </button>
         <nav className={styles.nav}>
           <ul className={`${alice.className} ${styles.list}`}>
-            <li>
-              <Link href="/biography">BIOGRAPHY</Link>
-            </li>
-            <li>
-              <Link href="/discography">DISCOGRAPHY</Link>
-            </li>
-            <li>
-              <Link href="/playlist">PLAYLIST</Link>
-            </li>
-            <li>
-              <Link href="/blog">BLOG</Link>
-            </li>
+            {menuItems.map(({ path, text }) => (
+              <li key={path}>
+                <Link href={path}>{text}</Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

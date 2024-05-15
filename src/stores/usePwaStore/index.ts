@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import env from "@/env";
 
 export type PwaState = {
   isLoading: boolean;
@@ -10,10 +9,9 @@ export type PwaState = {
 
 const usePwaStore = create<PwaState>((set) => ({
   isLoading: true,
-  isPwa: env.NEXT_PUBLIC_IS_PWA === "true" || false,
+  isPwa: false,
   setIsLoading: ({ isLoading }): void => set({ isLoading }),
-  setIsPwa: ({ isPwa }): void =>
-    set({ isPwa: env.NEXT_PUBLIC_IS_PWA === "true" || isPwa }),
+  setIsPwa: ({ isPwa }): void => set({ isPwa }),
 }));
 
 export default usePwaStore;

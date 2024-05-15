@@ -1,11 +1,21 @@
 .nav {
-  background: #c5dedf;
-  color: #fff;
+  background: #333;
 }
 
 .list {
+  align-items: center;
+  color: #fff;
   display: grid;
-  font-size: 1.4rem;
-  grid-template: auto / repeat(4, 1fr);
+  font-size: 1.2rem;
+  grid-template: 64px / repeat(4, 1fr);
+  text-align: center;
+}
+
+.link {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 6px 0;
   text-align: center;
 }

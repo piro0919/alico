@@ -2,11 +2,29 @@
   display: grid;
   grid-template: 1fr auto / 1fr;
   min-height: 100dvh;
-  position: relative;
 }
 
-.mobileMenuWrapper {
+.musicPlayerWrapper {
+  overflow: hidden;
+}
+
+.pwaInner {
   inset: auto 0 0;
   position: fixed;
-  z-index: 1;
+
+  .musicPlayerWrapper {
+    position: absolute;
+    width: 100%;
+  }
+}
+
+:not(.pwaInner) {
+  .musicPlayerWrapper {
+    bottom: 0;
+    position: sticky;
+  }
+}
+
+.footerWrapper {
+  position: relative;
 }

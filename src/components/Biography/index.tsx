@@ -17,7 +17,7 @@ export default function Biography(): JSX.Element {
             className={styles.image}
             fill={true}
             quality={100}
-            src="/E0D3TGEUUAA3qp7.jpg"
+            src="/FyaGCOlacAUMKsv.jpg"
           />
         </div>
         <div className={styles.textsWrapper}>

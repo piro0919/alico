@@ -1,8 +1,14 @@
 .footer {
   background: #333;
   display: flex;
+  height: 64px;
   justify-content: center;
-  padding: 36px 24px;
+  @media (width < 740px) {
+    padding: 0 12px;
+  }
+  @media (740px <= width) {
+    padding: 0 24px;
+  }
 }
 
 .inner {

@@ -7,12 +7,12 @@ import noScroll from "no-scroll";
 import { useEffect } from "react";
 import { MdExpandCircleDown } from "react-icons/md";
 import { TailSpin } from "react-loader-spinner";
+import ReactPlayer from "react-player";
 import { Element, scroller } from "react-scroll";
 import Masonry from "react-smart-masonry";
 import { SocialIcon } from "react-social-icons";
 import Spacer from "react-spacer";
 import { Timeline } from "react-twitter-widgets";
-import YouTube from "react-youtube";
 import sleep from "sleep-promise";
 import { useShallow } from "zustand/react/shallow";
 import Header from "../Header";
@@ -55,7 +55,15 @@ export default function App(): JSX.Element {
 
   return (
     <>
-      <div className={styles.topWrapper}>
+      <motion.div
+        animate={{ opacity: isPwa ? 0 : 1 }}
+        className={styles.topWrapper}
+        initial={{ opacity: 1 }}
+        style={{
+          pointerEvents: isPwa ? "none" : "auto",
+        }}
+        transition={{ delay: 1 }}
+      >
         <div className={styles.leftWrapper}>
           <div className={`pattern-cross-dots-md ${styles.diagonalLines}`} />
           <motion.div
@@ -105,17 +113,14 @@ export default function App(): JSX.Element {
         >
           <MdExpandCircleDown color="#fff" size={48} />
         </motion.button>
-      </div>
+      </motion.div>
       <Element name="content">
         {isLoading ? null : (
           <motion.div
-            animate={{ opacity: 1 }}
             className={styles.contentWrapper}
-            initial={{ opacity: isPwa ? 0 : 1 }}
             style={{
               marginTop: isPwa ? "-100dvh" : 0,
             }}
-            transition={{ delay: 1 }}
           >
             <div className={styles.headerWrapper}>
               <Header />
@@ -150,13 +155,13 @@ export default function App(): JSX.Element {
                     <hr className={styles.hr} />
                     <div className={styles.content}>
                       <ul className={styles.list}>
-                        {Array(3)
+                        {Array(1)
                           .fill(undefined)
                           .map((_, index) => (
                             <li key={index}>
-                              <div className={styles.date}>2024.05.01</div>
+                              <div className={styles.date}>2024.06.01</div>
                               <div className={styles.title}>
-                                2ndオリジナルアルバム『残夢』店舗別購入特典絵柄決定！
+                                alico in Singerland オープン！
                               </div>
                             </li>
                           ))}
@@ -172,10 +177,10 @@ export default function App(): JSX.Element {
                         MUSIC VIDEO
                       </h2>
                     </div>
-                    <YouTube
-                      className={styles.youTube}
-                      iframeClassName={styles.youTubeIframe}
-                      videoId="8Xcl3x8kxM4"
+                    <ReactPlayer
+                      className={styles.reactPlayer}
+                      iframeClassName={styles.reactPlayerIframe}
+                      url="https://www.youtube.com/watch?v=8Xcl3x8kxM4"
                     />
                   </article>
                   <article
@@ -190,37 +195,54 @@ export default function App(): JSX.Element {
                     <hr className={styles.hr} />
                     <div className={styles.content}>
                       <ul className={styles.list}>
-                        {Array(3)
-                          .fill(undefined)
-                          .map((_, index) => (
-                            <li className={styles.item} key={index}>
-                              <div className={styles.thumbnailWrapper}>
-                                <Image
-                                  alt=""
-                                  fill={true}
-                                  quality={100}
-                                  src="/ite587325.jpg"
+                        {[
+                          {
+                            date: "2023.07.01",
+                            imageUrl:
+                              "/large_5e3c349d27104c54680baf8ec787f0c7.jpg",
+                            title: "YOUR STORIES",
+                            url: "https://big-up.style/musics/554840",
+                          },
+                          {
+                            date: "2023.04.01",
+                            imageUrl:
+                              "/large_a3ff8d440e181a8f1771430faedc4f92.jpg",
+                            title: "Vocis Helix",
+                            url: "https://big-up.style/xmc4ZV8n83",
+                          },
+                          {
+                            date: "2020.01.31",
+                            imageUrl: "/itew587325.webp",
+                            title: "薔薇とケモノ",
+                            url: "https://linkco.re/CzbhDud6",
+                          },
+                        ].map(({ date, imageUrl, title, url }) => (
+                          <li className={styles.item} key={url}>
+                            <div className={styles.thumbnailWrapper}>
+                              <Image
+                                alt={title}
+                                fill={true}
+                                quality={100}
+                                src={imageUrl}
+                              />
+                            </div>
+                            <div className={styles.detailWrapper}>
+                              <div className={styles.releaseWrapper}>
+                                {date}
+                              </div>
+                              <div className={styles.titleWrapper}>{title}</div>
+                              <Spacer grow="1" />
+                              <div className={styles.socialIcons}>
+                                <SocialIcon
+                                  bgColor="#e6c8b4"
+                                  className={styles.socialIcon}
+                                  target="_blank"
+                                  url={url}
                                 />
                               </div>
-                              <div className={styles.detailWrapper}>
-                                <div className={styles.releaseWrapper}>
-                                  2020.01.31
-                                </div>
-                                <div className={styles.titleWrapper}>
-                                  薔薇とケモノ
-                                </div>
-                                <Spacer grow="1" />
-                                <div className={styles.socialIcons}>
-                                  <SocialIcon
-                                    bgColor="#e6c8b4"
-                                    className={styles.socialIcon}
-                                    target="_blank"
-                                    url="https://linkco.re/CzbhDud6"
-                                  />
-                                </div>
-                              </div>
-                            </li>
-                          ))}
+                            </div>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </article>
