@@ -4,16 +4,19 @@
   "display": "fullscreen",
   "icons": [
     {
+      "purpose": "maskable",
       "sizes": "64x64 32x32 24x24 16x16",
       "src": "favicon.ico",
       "type": "image/x-icon"
     },
     {
+      "purpose": "maskable",
       "sizes": "192x192",
       "src": "logo192.png",
       "type": "image/png"
     },
     {
+      "purpose": "maskable",
       "sizes": "512x512",
       "src": "logo512.png",
       "type": "image/png"
@@ -23,5 +26,5 @@
   "orientation": "portrait",
   "short_name": "alico",
   "start_url": ".",
-  "theme_color": "#fff"
+  "theme_color": "#ffffff"
 }
