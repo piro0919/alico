@@ -13,8 +13,8 @@ import Masonry from "react-smart-masonry";
 import { SocialIcon } from "react-social-icons";
 import Spacer from "react-spacer";
 import { Timeline } from "react-twitter-widgets";
-import sleep from "sleep-promise";
 import usePwa from "use-pwa";
+import { useSessionStorage } from "usehooks-ts";
 import { useShallow } from "zustand/react/shallow";
 import Header from "../Header";
 import styles from "./style.module.scss";
@@ -37,85 +37,88 @@ export default function App(): JSX.Element {
     })),
   );
   const { canInstallprompt, enabledPwa, showInstallPrompt } = usePwa();
+  const [isShowTop, setIsShowTop] = useSessionStorage("is-show-top", true);
 
   useEffect(() => {
-    const callback = async (): Promise<void> => {
-      if (isLoading) {
-        noScroll.on();
+    if (isLoading) {
+      noScroll.on();
 
-        return;
-      }
+      return;
+    }
 
-      await sleep(1000);
-
+    const timeout = setTimeout(() => {
       noScroll.off();
-    };
+      setIsShowTop(false);
+    }, 2000);
 
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    callback();
-  }, [isLoading]);
+    return (): void => clearTimeout(timeout);
+  }, [isLoading, setIsShowTop]);
 
   return (
     <>
-      <motion.div
-        animate={{ opacity: isPwa ? 0 : 1 }}
-        className={styles.topWrapper}
-        initial={{ opacity: 1 }}
-        style={{
-          pointerEvents: isPwa ? "none" : "auto",
-        }}
-        transition={{ delay: 1 }}
-      >
-        <div className={styles.leftWrapper}>
-          <div className={`pattern-cross-dots-md ${styles.diagonalLines}`} />
-          <motion.div
-            animate={{ opacity: isLoading ? 1 : 0 }}
-            className={styles.loadingWrapper}
-            initial={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            <TailSpin color="#fff" height="60" radius="1" width="60" />
-          </motion.div>
-          <motion.div
-            animate={{ opacity: isLoading ? 0 : 1 }}
-            className={styles.textsWrapper}
-            initial={{ opacity: 0 }}
-            transition={{ delay: 1 }}
-          >
-            <h1 className={`${dancingScript.className} ${styles.h1}`}>
-              alico in Singerland
-            </h1>
-            <div className={styles.text}>
-              {isPwa ? "alico オフィシャルアプリ" : "alico オフィシャルサイト"}
-            </div>
-          </motion.div>
-        </div>
-        <div className={styles.rightWrapper}>
-          <Image
-            alt="alico"
-            className={styles.image}
-            fill={true}
-            src="/312167906_424940613049488_3487110088321145466_n.jpg"
-          />
-        </div>
-        <motion.button
-          animate={{
-            bottom: isLoading ? "-48px" : "18px",
-            opacity: isLoading || isPwa ? 0 : 1,
+      <div style={{ opacity: isPwa && !isShowTop ? 0 : 1 }}>
+        <motion.div
+          animate={{ opacity: isPwa ? 0 : 1 }}
+          className={styles.topWrapper}
+          initial={{ opacity: 1 }}
+          style={{
+            pointerEvents: isPwa ? "none" : "auto",
           }}
-          className={styles.button}
-          initial={{ bottom: "-48px", opacity: 0 }}
-          onClick={() =>
-            scroller.scrollTo("content", {
-              duration: 500,
-              smooth: "easeInOutQuad",
-            })
-          }
           transition={{ delay: 1 }}
         >
-          <MdExpandCircleDown color="#fff" size={48} />
-        </motion.button>
-      </motion.div>
+          <div className={styles.leftWrapper}>
+            <div className={`pattern-cross-dots-md ${styles.diagonalLines}`} />
+            <motion.div
+              animate={{ opacity: isLoading ? 1 : 0 }}
+              className={styles.loadingWrapper}
+              initial={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+            >
+              <TailSpin color="#fff" height="60" radius="1" width="60" />
+            </motion.div>
+            <motion.div
+              animate={{ opacity: isLoading ? 0 : 1 }}
+              className={styles.textsWrapper}
+              initial={{ opacity: 0 }}
+              transition={{ delay: 1 }}
+            >
+              <h1 className={`${dancingScript.className} ${styles.h1}`}>
+                alico in Singerland
+              </h1>
+              <div className={styles.text}>
+                {isPwa
+                  ? "alico オフィシャルアプリ"
+                  : "alico オフィシャルサイト"}
+              </div>
+            </motion.div>
+          </div>
+          <div className={styles.rightWrapper}>
+            <Image
+              alt="alico"
+              className={styles.image}
+              fill={true}
+              src="/312167906_424940613049488_3487110088321145466_n.jpg"
+            />
+          </div>
+          <motion.button
+            animate={{
+              bottom: isLoading ? "-48px" : "18px",
+              opacity: isLoading || isPwa ? 0 : 1,
+            }}
+            className={styles.button}
+            initial={{ bottom: "-48px", opacity: 0 }}
+            onClick={() =>
+              scroller.scrollTo("content", {
+                duration: 500,
+                smooth: "easeInOutQuad",
+              })
+            }
+            transition={{ delay: 1 }}
+          >
+            <MdExpandCircleDown color="#fff" size={48} />
+          </motion.button>
+        </motion.div>
+      </div>
       <Element name="content">
         {isLoading ? null : (
           <motion.div
