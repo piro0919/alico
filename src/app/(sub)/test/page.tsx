@@ -2,35 +2,20 @@
 import { useEffect, useState } from "react";
 
 export default function Page(): JSX.Element {
-  const [manifest, setManifest] = useState();
-  const [cachesInWindow, setCachesInWindow] = useState<boolean>();
+  const [iOSCanInstall, setIOSCanInstall] = useState(false);
+  const [iOSIsInstalled, setIOSIsInstalled] = useState(false);
 
   useEffect(() => {
-    const {
-      navigator: { serviceWorker },
-    } = window;
-
-    if (!("getManifest" in serviceWorker)) {
-      return;
-    }
-
+    setIOSCanInstall("standalone" in window.navigator);
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    const manifest = serviceWorker.getManifest();
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    setManifest(manifest);
-  }, []);
-
-  useEffect(() => {
-    setCachesInWindow("caches" in window);
-  }, []);
+    setIOSIsInstalled(window.navigator?.standalone === true);
+  }, [iOSCanInstall, iOSIsInstalled]);
 
   return (
     <div>
-      <div>{`manifest: ${JSON.stringify(manifest)}`}</div>
-      <div>{`cachesInWindow: ${cachesInWindow}`}</div>
+      <div>{`iOSCanInstall: ${iOSCanInstall}`}</div>
+      <div>{`iOSIsInstalled: ${iOSIsInstalled}`}</div>
     </div>
   );
 }
