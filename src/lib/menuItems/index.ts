@@ -1,7 +1,6 @@
 import { BiUser } from "react-icons/bi";
 import { FaMicrophoneAlt } from "react-icons/fa";
 import { GiNotebook } from "react-icons/gi";
-import { GrTest } from "react-icons/gr";
 import { RiPlayListFill } from "react-icons/ri";
 
 const menuItems = [
@@ -24,11 +23,6 @@ const menuItems = [
     Icon: GiNotebook,
     path: "/blog",
     text: "BLOG",
-  },
-  {
-    Icon: GrTest,
-    path: "/test",
-    text: "TEST",
   },
 ] as const;
 
