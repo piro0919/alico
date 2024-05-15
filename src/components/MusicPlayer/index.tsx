@@ -55,7 +55,9 @@ export default function MusicPlayer(): JSX.Element {
     <div>
       <div className={styles.wrapper}>
         <div className={styles.inner}>
-          <IoPlaySkipBackSharp size={18} />
+          <button onClick={() => ref.current?.seekTo(0)}>
+            <IoPlaySkipBackSharp size={18} />
+          </button>
           {playing ? (
             <button onClick={() => offPlaying()}>
               <IoPauseSharp size={30} />

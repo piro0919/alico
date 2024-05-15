@@ -323,3 +323,23 @@
     width: 36px !important;
   }
 }
+
+.article[data-article="link"] {
+  .list {
+    display: grid;
+    @media (width < 740px) {
+      gap: 12px;
+    }
+    @media (740px <= width) {
+      gap: 24px;
+    }
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 1.4rem;
+  }
+}

@@ -1,7 +1,9 @@
 "use client";
+import NoSSR from "@mpth/react-no-ssr";
 import { motion } from "framer-motion";
 import { AppProgressBar as ProgressBar } from "next-nprogress-bar";
 import { ReactNode, useEffect, useState } from "react";
+import PWAPrompt from "react-ios-pwa-prompt";
 import usePwa from "use-pwa";
 import { useWindowSize } from "usehooks-ts";
 import { useShallow } from "zustand/react/shallow";
@@ -97,8 +99,18 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
           <CommonFooter setPaddingBottom={setPaddingBottom} />
         )}
       </motion.div>
-      <Drawer />
+      <NoSSR>
+        <Drawer />
+      </NoSSR>
       <ProgressBar color="#fff" height="2px" />
+      <PWAPrompt
+        copyAddHomeButtonLabel="2) 「ホーム画面に追加」をタップします。"
+        copyBody="このウェブサイトにはアプリ機能があります。ホーム画面に追加してフルスクリーンおよびオフラインで使用できます。"
+        copyClosePrompt="キャンセル"
+        copyShareButtonLabel="1) （四角から矢印が飛び出したマーク）をタップします。"
+        copyTitle="ホーム画面に追加"
+        debug={process.env.NODE_ENV === "development"}
+      />
     </>
   );
 }

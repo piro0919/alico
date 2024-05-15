@@ -14,6 +14,7 @@ import { SocialIcon } from "react-social-icons";
 import Spacer from "react-spacer";
 import { Timeline } from "react-twitter-widgets";
 import sleep from "sleep-promise";
+import usePwa from "use-pwa";
 import { useShallow } from "zustand/react/shallow";
 import Header from "../Header";
 import styles from "./style.module.scss";
@@ -35,6 +36,7 @@ export default function App(): JSX.Element {
       isPwa: state.isPwa,
     })),
   );
+  const { canInstallprompt, enabledPwa, showInstallPrompt } = usePwa();
 
   useEffect(() => {
     const callback = async (): Promise<void> => {
@@ -243,6 +245,55 @@ export default function App(): JSX.Element {
                             </div>
                           </li>
                         ))}
+                      </ul>
+                    </div>
+                  </article>
+                  <article className={styles.article} data-article="link">
+                    <div className={styles.h2Wrapper}>
+                      <h2 className={`${quando.className} ${styles.h2}`}>
+                        LINK
+                      </h2>
+                    </div>
+                    <hr className={styles.hr} />
+                    <div className={styles.content}>
+                      <ul className={styles.list}>
+                        <li>
+                          <a
+                            className={styles.title}
+                            href="https://line.me/ti/g2/sQ39n2ITWk4ADOb9yEU3zCHgtcY8RvfzrwQYSw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"
+                            target="_blank"
+                          >
+                            TikTok配信スケジュール
+                          </a>
+                          <p className={styles.description}>
+                            LINEオープンチャットでお知らせします！
+                          </p>
+                        </li>
+                        <li>
+                          <a
+                            className={styles.title}
+                            href="https://docs.google.com/spreadsheets/d/12x8EPpWWBGktdHA_aulRtZ3HUnLJ2mhY7laBdwrk-j8/edit"
+                            target="_blank"
+                          >
+                            カラオケリスト
+                          </a>
+                          <p className={styles.description}>
+                            曲リクエストはこちらからどうぞ！
+                          </p>
+                        </li>
+                        {canInstallprompt && enabledPwa && !isPwa ? (
+                          <li>
+                            <div
+                              className={styles.title}
+                              onClick={() => showInstallPrompt()}
+                            >
+                              alicoオフィシャルアプリ
+                            </div>
+                            <p className={styles.description}>
+                              こちらからダウンロード！
+                            </p>
+                          </li>
+                        ) : null}
                       </ul>
                     </div>
                   </article>
