@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Shippori_Antique as ShipporiAntique } from "next/font/google";
 import "pattern.css";
+import "react-lite-youtube-embed/dist/LiteYouTubeEmbed.css";
 import "react-modern-drawer/dist/index.css";
 import "ress";
 import "./globals.scss";

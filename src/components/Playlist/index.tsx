@@ -1,6 +1,9 @@
 "use client";
 import Image from "next/image";
 import { useEffect } from "react";
+import { IoPauseSharp, IoPlaySharp } from "react-icons/io5";
+import { SocialIcon } from "react-social-icons";
+import Spacer from "react-spacer";
 import { useShallow } from "zustand/react/shallow";
 import styles from "./style.module.scss";
 import getYouTubeId from "@/lib/getYouTubeId";
@@ -22,15 +25,26 @@ export default function Playlist(): JSX.Element {
       url: "https://www.youtube.com/watch?v=tRLZLVfo1NQ",
     },
   ];
-  const { setCurrentMusic, setMusicList } = useMusicListStore(
-    useShallow<
-      MusicListState,
-      Pick<MusicListState, "setCurrentMusic" | "setMusicList">
-    >((state) => ({
-      setCurrentMusic: state.setCurrentMusic,
-      setMusicList: state.setMusicList,
-    })),
-  );
+  const { currentMusic, offPlaying, playing, setCurrentMusic, setMusicList } =
+    useMusicListStore(
+      useShallow<
+        MusicListState,
+        Pick<
+          MusicListState,
+          | "currentMusic"
+          | "offPlaying"
+          | "playing"
+          | "setCurrentMusic"
+          | "setMusicList"
+        >
+      >((state) => ({
+        currentMusic: state.currentMusic,
+        offPlaying: state.offPlaying,
+        playing: state.playing,
+        setCurrentMusic: state.setCurrentMusic,
+        setMusicList: state.setMusicList,
+      })),
+    );
 
   useEffect(() => {
     setMusicList({ musicList });
@@ -44,8 +58,17 @@ export default function Playlist(): JSX.Element {
             <li
               className={styles.item}
               key={url}
-              onClick={() => setCurrentMusic({ currentMusic: { title, url } })}
+              onClick={() =>
+                currentMusic?.url === url && playing
+                  ? offPlaying()
+                  : setCurrentMusic({ currentMusic: { title, url } })
+              }
             >
+              {currentMusic?.url === url && playing ? (
+                <IoPauseSharp color="#e6c8b4" size={18} />
+              ) : (
+                <IoPlaySharp color="#e6c8b4" size={18} />
+              )}
               <Image
                 alt=""
                 height={27}
@@ -54,6 +77,13 @@ export default function Playlist(): JSX.Element {
                 width={48}
               />
               <div className={styles.title}>{title}</div>
+              <Spacer grow={1} />
+              <SocialIcon
+                className={styles.socialIcon}
+                key={url}
+                target="_blank"
+                url={url}
+              />
             </li>
           ))}
         </ul>

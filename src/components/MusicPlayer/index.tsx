@@ -12,29 +12,41 @@ import {
 import ReactPlayer from "react-player";
 import { OnProgressProps } from "react-player/base";
 import Spacer from "react-spacer";
-import { useBoolean } from "usehooks-ts";
 import { useShallow } from "zustand/react/shallow";
 import styles from "./style.module.scss";
 import getYouTubeId from "@/lib/getYouTubeId";
 import useMusicListStore, { MusicListState } from "@/stores/useMusicListStore";
 
 export default function MusicPlayer(): JSX.Element {
-  const { currentMusic, musicList, setCurrentMusic } = useMusicListStore(
+  const {
+    currentMusic,
+    musicList,
+    offPlaying,
+    onPlaying,
+    playing,
+    setCurrentMusic,
+  } = useMusicListStore(
     useShallow<
       MusicListState,
-      Pick<MusicListState, "currentMusic" | "musicList" | "setCurrentMusic">
+      Pick<
+        MusicListState,
+        | "currentMusic"
+        | "offPlaying"
+        | "onPlaying"
+        | "playing"
+        | "musicList"
+        | "setCurrentMusic"
+      >
     >((state) => ({
       currentMusic: state.currentMusic,
       musicList: state.musicList,
+      offPlaying: state.offPlaying,
+      onPlaying: state.onPlaying,
+      playing: state.playing,
       setCurrentMusic: state.setCurrentMusic,
     })),
   );
   const ref = useRef<ReactPlayer>(null);
-  const {
-    setFalse: offPlaying,
-    setTrue: onPlaying,
-    value: playing,
-  } = useBoolean(false);
   const [{ played, playedSeconds }, setOnProgressProps] =
     useState<OnProgressProps>({
       loaded: 0,
@@ -55,7 +67,23 @@ export default function MusicPlayer(): JSX.Element {
     <div>
       <div className={styles.wrapper}>
         <div className={styles.inner}>
-          <button onClick={() => ref.current?.seekTo(0)}>
+          <button
+            onClick={() => {
+              if (playedSeconds > 3) {
+                ref.current?.seekTo(0);
+
+                return;
+              }
+
+              const index = musicList.findIndex(
+                ({ url }) => currentMusic?.url === url,
+              );
+
+              setCurrentMusic({
+                currentMusic: musicList[(index - 1) % musicList.length],
+              });
+            }}
+          >
             <IoPlaySkipBackSharp size={18} />
           </button>
           {playing ? (

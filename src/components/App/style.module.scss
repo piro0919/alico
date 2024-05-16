@@ -250,21 +250,6 @@
   }
 }
 
-.article[data-article="music-video"] {
-  .reactPlayer {
-    aspect-ratio: 16 / 9;
-    height: auto !important;
-    position: relative;
-    width: 100% !important;
-  }
-
-  .reactPlayerIframe {
-    height: 100%;
-    position: absolute;
-    width: 100%;
-  }
-}
-
 .article[data-article="new-release"] {
   .list {
     display: grid;
@@ -341,5 +326,21 @@
 
   .description {
     font-size: 1.4rem;
+  }
+}
+
+.article[data-article="x"] {
+  .inner {
+    height: 480px;
+    position: relative;
+  }
+
+  .overlay {
+    align-items: center;
+    background: #fff;
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    position: absolute;
   }
 }

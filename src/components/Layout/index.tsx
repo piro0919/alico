@@ -113,7 +113,10 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
         copyClosePrompt="キャンセル"
         copyShareButtonLabel="1) （四角から矢印が飛び出したマーク）をタップします。"
         copyTitle="ホーム画面に追加"
-        debug={process.env.NODE_ENV === "development"}
+        debug={
+          process.env.NODE_ENV === "development" &&
+          env.NEXT_PUBLIC_IS_PWA === "true"
+        }
       />
     </>
   );
