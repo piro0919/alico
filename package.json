@@ -4,7 +4,7 @@
     "@mpth/react-no-ssr": "1.0.1",
     "@t3-oss/env-nextjs": "0.10.1",
     "format-duration": "3.0.2",
-    "framer-motion": "11.2.11",
+    "framer-motion": "11.2.12",
     "next": "14.2.4",
     "next-nprogress-bar": "2.3.12",
     "no-scroll": "2.1.1",
@@ -28,7 +28,7 @@
     "use-pwa": "2.2.0",
     "usehooks-ts": "3.1.0",
     "zod": "3.23.8",
-    "zustand": "4.5.2"
+    "zustand": "4.5.4"
   },
   "devDependencies": {
     "@commitlint/cli": "19.3.0",
