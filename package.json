@@ -34,7 +34,7 @@
     "@commitlint/cli": "19.4.0",
     "@commitlint/config-conventional": "19.2.2",
     "@piro0919/next-unused": "0.2.2",
-    "@total-typescript/ts-reset": "0.5.1",
+    "@total-typescript/ts-reset": "0.6.0",
     "@types/no-scroll": "2.1.2",
     "@types/node": "^20",
     "@types/react": "^18",
