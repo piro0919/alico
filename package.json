@@ -4,7 +4,7 @@
     "@mpth/react-no-ssr": "1.0.1",
     "@t3-oss/env-nextjs": "0.11.1",
     "format-duration": "3.0.2",
-    "framer-motion": "11.11.8",
+    "framer-motion": "11.11.9",
     "next": "14.2.15",
     "next-nprogress-bar": "2.3.14",
     "no-scroll": "2.1.1",
