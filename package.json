@@ -4,9 +4,9 @@
     "@mpth/react-no-ssr": "1.0.1",
     "@t3-oss/env-nextjs": "0.12.0",
     "format-duration": "3.0.2",
-    "framer-motion": "12.4.1",
-    "next": "15.1.6",
-    "next-nprogress-bar": "2.4.4",
+    "framer-motion": "12.4.3",
+    "next": "15.1.7",
+    "next-nprogress-bar": "2.4.5",
     "no-scroll": "2.1.1",
     "pattern.css": "1.0.0",
     "query-string": "9.1.1",
@@ -27,7 +27,7 @@
     "ress": "5.0.2",
     "use-pwa": "2.2.0",
     "usehooks-ts": "3.1.1",
-    "zod": "3.24.1",
+    "zod": "3.24.2",
     "zustand": "5.0.3"
   },
   "devDependencies": {
