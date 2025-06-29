@@ -4,8 +4,8 @@
     "@mpth/react-no-ssr": "1.0.1",
     "@t3-oss/env-nextjs": "0.13.8",
     "format-duration": "3.0.2",
-    "framer-motion": "12.18.1",
-    "next": "15.3.3",
+    "framer-motion": "12.19.2",
+    "next": "15.3.4",
     "next-nprogress-bar": "2.4.7",
     "no-scroll": "2.1.1",
     "pattern.css": "1.0.0",
@@ -27,8 +27,8 @@
     "ress": "5.0.2",
     "use-pwa": "2.2.0",
     "usehooks-ts": "3.1.1",
-    "zod": "3.25.64",
-    "zustand": "5.0.5"
+    "zod": "3.25.67",
+    "zustand": "5.0.6"
   },
   "devDependencies": {
     "@commitlint/cli": "19.8.1",
