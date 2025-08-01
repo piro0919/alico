@@ -4,8 +4,8 @@
     "@mpth/react-no-ssr": "1.0.1",
     "@t3-oss/env-nextjs": "0.13.8",
     "format-duration": "3.0.2",
-    "framer-motion": "12.23.3",
-    "next": "15.3.5",
+    "framer-motion": "12.23.12",
+    "next": "15.4.5",
     "next-nprogress-bar": "2.4.7",
     "no-scroll": "2.1.1",
     "pattern.css": "1.0.0",
@@ -18,7 +18,7 @@
     "react-lite-youtube-embed": "2.5.1",
     "react-loader-spinner": "6.1.6",
     "react-modern-drawer": "1.4.0",
-    "react-player": "3.2.0",
+    "react-player": "3.3.1",
     "react-scroll": "1.9.3",
     "react-smart-masonry": "2.0.2",
     "react-social-icons": "6.24.0",
@@ -27,8 +27,8 @@
     "ress": "5.0.2",
     "use-pwa": "2.2.0",
     "usehooks-ts": "3.1.1",
-    "zod": "4.0.5",
-    "zustand": "5.0.6"
+    "zod": "4.0.14",
+    "zustand": "5.0.7"
   },
   "devDependencies": {
     "@commitlint/cli": "19.8.1",
